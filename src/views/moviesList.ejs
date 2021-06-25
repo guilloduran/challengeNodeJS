@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Películas</title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+
+</head>
+<header>
+    <nav>
+        <% if(user) { %>
+        <ul class="nav justify-content-end">
+            <li class="">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav justify-content-end">
+            <li class="">
+                <a class="nav-link" href="/users/login">Log In</a>
+            </li>
+            <li class="">
+                <a class="nav-link" href="/users/addUser">Registrarse</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } %>
+    </nav>
+
+</header>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House" width="50%" style=" margin: auto; display: block;">
+    </figure>
+    <h1 class="moviesListTitulo"></h1>
+    <br>
+    <% if(user != undefined) { %>
+    <% } else { %>
+    <% } %>
+    <% if(privileges == '1') { %>
+    <h2 style="text-align: center; margin-bottom: 20px;"> Hola <%= user %>!</h2>
+    <p style="text-align: center;">Panel de administrador</p>
+    <button onclick="location.href='/movies/add'" class="btn btn-primary"
+        style="display: block; text-align: center; width: 180px; margin: auto;">Agregar una
+        Pelicula</button>
+    <% } else { %>
+    <h2 style="text-align: center;"> Hola <%= user %>!</h2>
+    <% } %>
+    <h4 style="text-align: center; margin-top: 20px;">Peliculas en nuestra base de datos:</h3>
+
+        <br>
+        <ul class="list-group" style="width: 50%; margin: auto; margin-bottom: 20px;">
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+            <li class="list-group-item list-group-item-action">
+                <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
+            </li>
+            <% } %>
+
+        </ul>
+</body>
+
+
+</html>

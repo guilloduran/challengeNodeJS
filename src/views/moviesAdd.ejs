@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar una Pelicula</title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+</head>
+<header>
+    <nav>
+        <% if(user) { %>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav justify-content-end">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/users/login">Log In</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">inicio</a>
+            </li>
+        </ul>
+        <% } %>
+    </nav>
+
+</header>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House" width="50%" style=" margin: auto; display: block;">
+    </figure>
+    <h2 style="text-align: center; margin-bottom: 20px;">Agregar Película</h1>
+        <br>
+        <section class="formulario">
+            <form action="/movies/create" method="POST"
+                style="display: block; text-align: center; width: 30%; margin: auto;">
+                <label for="title">Titulo </label>
+                <p><input type="text" name="title" id="" required style="margin-bottom: 20px;  width: 100%;"></p>
+                <label for="rating">Calificación </label>
+                <p><input type="number" name="rating" id="" required style="margin-bottom: 20px;  width: 100%;"> </p>
+                <label for="awards">Premios </label>
+                <p><input type="number" name="awards" id="" required style="margin-bottom: 20px;  width: 100%;"></p>
+                <label for="release_date">Fecha de creación </label>
+                <p><input type="date" name="release_date" id="" required style="margin-bottom: 20px;  width: 100%;"></p>
+                <label for="length">Duración </label>
+                <p><input type="number" name="length" id="" required style="margin-bottom: 20px;  width: 100%;"></p>
+                <label for="genreID">Género </label>
+                <p>
+                    <select name="genre_id" id="" required style="margin-bottom: 20px;  width: 100%;">
+                        <option value="" disabled selected>- Seleccione el género - </option>
+                        <% allGenres.forEach(genre => { %>
+                        <option value="<%= genre.id %>"><%= genre.name %></option>
+                        <% }); %>
+                    </select>
+                </p>
+                <!-- <label for="first_name">nombre actor </label>
+            <p><input type="text" name="first_name" id="" required></p>
+            <label for="last_name">apellido actor </label>
+            <p><input type="text" name="last_name" id="" required></p>
+            <label for="ratinga">rating </label>
+            <p><input type="number" name="ratinga" id="" required></p> -->
+
+
+                <br>
+                <p>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+
+
+                    <button onclick="location.href='/'" class="btn btn-secondary" type="button">Listado de
+                        Películas</button></p>
+            </form>
+        </section>
+
+</body>
+
+</html>

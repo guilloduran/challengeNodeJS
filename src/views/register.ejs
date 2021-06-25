@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+
+</head>
+<header>
+    <nav>
+        <% if(user) { %>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav justify-content-end">
+            <li class="">
+                <a class="nav-link" href="/users/login">Log In</a>
+            </li>
+            <li class="">
+                <a class="nav-link" href="/users/addUser">Registrarse</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } %>
+    </nav>
+
+</header>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House" width="50%" style=" margin: auto; display: block;">
+    </figure>
+    <h1 class="moviesListTitulo"></h1>
+
+    <h2 style="text-align: center; margin-bottom: 20px;">Registro</h2>
+
+    <form method="POST" action="/users/register" style="display: block; text-align: center; width: 30%; margin: auto;">
+        <div>
+            <input type="text" style="margin-bottom: 20px;  width: 100%;" name="name" id="name"
+                placeholder="Ingrese su nombre" value="" required>
+        </div>
+        <div>
+            <input type="email" style="margin-bottom: 20px;  width: 100%;" name="email" id="email"
+                placeholder="Ingrese su correo electronico" value="" required>
+        </div>
+        <div>
+            <input type="password" style="margin-bottom: 20px;  width: 100%;" name="password" id="password"
+                placeholder="Ingrese su contraseña" value="" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+
+</body>
+
+</html>

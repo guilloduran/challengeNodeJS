@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+
+</head>
+<header>
+    <nav>
+        <% if(!user == undefined) { %>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav justify-content-end">
+            <li class="">
+                <a class="nav-link" href="/users/login">Log In</a>
+            </li>
+            <li class="">
+                <a class="nav-link" href="/users/addUser">Registrarse</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } %>
+    </nav>
+
+</header>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House" width="50%" style=" margin: auto; display: block;">
+    </figure>
+    <h1 class="moviesListTitulo"></h1>
+
+    <h2 style="text-align: center; margin-bottom: 20px;">Login</h2>
+
+    <form method="POST" action="/users/loginProcess"
+        style="display: block; text-align: center; width: 30%; margin: auto;">
+        <% if (locals.errors && errors.email) { %>
+        <div class="text-danger" style="margin-bottom: 20px;"><%= errors.email.msg %> </div>
+        <% } %>
+        <input style="margin-bottom: 20px;  width: 100%;" type="email" name="email" id="email"
+            placeholder="tuemail@email.com" value="" required>
+        </div>
+        <div>
+            <input style="margin-bottom: 20px;  width: 100%;" type="password" name="password" id="password"
+                placeholder="********" value="" required>
+        </div>
+        <label for="">Recordame</label>
+        <input type="checkbox" name="rememberMe" style="margin-right: 40px;">
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    </form>
+
+</body>
+
+</html>

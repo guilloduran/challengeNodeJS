@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrado de la Película</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<header>
+    <nav>
+        <% if(user) { %>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav justify-content-end">
+            <li class="">
+                <a class="nav-link" href="/users/login">Log In</a>
+            </li>
+            <li class="">
+                <a class="nav-link" href="/users/addUser">Registrarse</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">inicio</a>
+            </li>
+        </ul>
+        <% } %>
+    </nav>
+
+</header>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House" width="50%" style=" margin: auto; display: block;">
+    </figure>
+    <h2 style="text-align: center; margin-bottom: 20px;">Estas seguro de querer borrar esta película:
+        <%= Movie.title %>???</h1>
+        <p>
+            <form action="/movies/delete/<%= Movie.id %>?_method=DELETE" method="POST"
+                style="display: block; text-align: center; width: 30%; margin: auto;">
+                <br>
+                <p>
+                    <button type="submit" class="btn btn-danger">Borrar la Película</button>
+
+                    <button onclick="location.href='/'" class="btn btn-secondary" type="button">Listado de
+                        Películas</button>
+
+
+            </form>
+        </p>
+
+</body>
+
+</html>

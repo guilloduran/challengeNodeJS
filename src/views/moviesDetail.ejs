@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %> </title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+
+</head>
+<header>
+    <nav>
+        <% if(user) { %>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log out</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav justify-content-end">
+            <li class="">
+                <a class="nav-link" href="/users/login">Log In</a>
+            </li>
+            <li class="">
+                <a class="nav-link" href="/users/addUser">Registrarse</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+        </ul>
+        <% } %>
+    </nav>
+
+</header>
+
+<body style=" text-align: center;  margin: auto;">
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House" width="50%" style=" margin: auto; display: block;">
+    </figure>
+    <h1><%= movie.title %> </h1>
+    <br>
+    <p class="font-weight-bold">RATING:</p>
+    <p> <%= movie.rating %> </p>
+    <p class="font-weight-bold">AWARDS:</p>
+    <p> <%= movie.awards %> </p>
+    <p class="font-weight-bold">LENGTH:</p>
+    <p> <%= movie.length + ' min'%> </p>
+    <p class="font-weight-bold">RELEASE DATE:</p>
+    <p> <%= movie.release_date %> </p>
+
+    <% if (movie.genre == null) { %>
+    <p class="font-weight-bold">GENERO:</p>
+    <p> No hay datos del genero.
+
+        <% } else { %>
+        <p class="font-weight-bold">GENERO:</p>
+        <p> <%= movie.genre.name %> </p>
+        <%  }  %>
+        <p class="font-weight-bold">ACTORES:</p>
+        <p>
+            <% if (movie.actors.length == 0) { %>
+            No hay datos sobre los actores.
+            <% } else { for( let i = 0; i < movie.actors.length; i++ ) { %>
+            <li style="width: 200px; margin: auto;" class="list-group-item list-group-item-action">
+
+                <%= movie.actors[i].first_name %>
+                <%= movie.actors[i].last_name %>
+
+            </li>
+        </p>
+
+        <%  } }  %>
+
+
+        <% if(privileges == '1') { %>
+        <p>Panel de administrador</p>
+
+        <button onclick="location.href='/movies/edit/<%= movie.id %>'" class="btn btn-primary">Modificar</button>
+        <button onclick="location.href='/movies/delete/<%= movie.id %>'" class="btn btn-danger">Borrar</button>
+        <p>
+
+        </p>
+        <% } else { %>
+        <% } %>
+
+        <section>
+            <button style="margin-bottom: 20px;" onclick="location.href='/'" class="btn btn-secondary"
+                type="button">Listado de
+                Películas</button>
+        </section>
+
+
+
+
+
+
+</body>
+
+</html>
