@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-	let alias = "Movie"; // esto debería estar en singular
+	let alias = "Movie";
 	let cols = {
 		id: {
 			type: dataTypes.BIGINT(10).UNSIGNED,
@@ -7,8 +7,6 @@ module.exports = (sequelize, dataTypes) => {
 			allowNull: false,
 			autoIncrement: true,
 		},
-		// created_at: dataTypes.TIMESTAMP,
-		// updated_at: dataTypes.TIMESTAMP,
 		title: {
 			type: dataTypes.STRING(500),
 			allowNull: false,
