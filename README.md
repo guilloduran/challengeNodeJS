@@ -5,7 +5,9 @@ Alumno: Guillermo Duran
 
 # Datos
 
-- hacer npm-install
+- hacer npm-install.
+
+- abrir "movies-db.sql" en DBeaver y ejecutar el script para crear la base en localhost.
 
 - La base "movies-db" cuenta con 2 usuarios para realizar las pruebas.
 
